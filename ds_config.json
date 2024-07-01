@@ -1,0 +1,28 @@
+{
+    "train_batch_size" : 16,
+    "train_micro_batch_size_per_gpu" : 16,
+    "gradient_accumulation_steps" : 16,
+    "optimizer": {
+        "type": "OneBitAdam",
+        "params": {
+          "lr": 6e-4,
+          "betas": [
+            0.9,
+            0.95
+          ],
+          "eps": 1e-8,
+          "weight_decay": 0.1,
+          "freeze_step": 400,
+          "cuda_aware": true,
+          "comm_backend_name": "nccl"
+        }
+    },
+    "scheduler": {
+        "type": "WarmupCosineLR",
+        "params": {
+            "warmup_min_lr": 6e-5,
+            "warmup_max_lr": 6e-4,
+            "warmup_num_steps": 715
+        }
+    }
+}
