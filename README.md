@@ -1,3 +1,18 @@
+#Few small improvements over nano-gpt taken from repo build-nanogpt by Karpathy
+
+Imporvements:
+1) Zero Optimization(Using pytorch zero redundancy optimization(saves memory in distributed setting, soon to publish results)
+2) Use fp16 for gpu specific - v100-sxm
+3) Setting gradients to None instead of zero because assignment is faster than addition(https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html). This does not matter much, only increased performance by less than 1 percent but good to have
+
+Few things that didn't work:
+1)Using pin_memory=True for faster data loading. 
+The data transfer should be overlapped by the kernel execution when using this but tokens/sec in training remains same when this is toggled. I think this is due to syncronization points or for this to take effect I might have to use pytorch's inbuilt Dataloader
+2)Compiling optimizer step leads to reduced training speed (https://pytorch.org/tutorials/recipes/compiling_optimizer.html)
+
+Also implemented using deepspeed which gives similar results as original pytorch implementation without much changes to original code)
+
+I am hoping to improve further by researching on techniques that can be used to improve training speed
 # build nanoGPT
 
 This repo holds the from-scratch reproduction of [nanoGPT](https://github.com/karpathy/nanoGPT/tree/master). The git commits were specifically kept step by step and clean so that one can easily walk through the git commit history to see it built slowly. Additionally, there is an accompanying [video lecture on YouTube](https://youtu.be/l8pRSuU81PU) where you can see me introduce each commit and explain the pieces along the way.
