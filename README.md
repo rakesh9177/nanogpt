@@ -1,4 +1,4 @@
-#Few small improvements over nano-gpt taken from repo build-nanogpt by Karpathy
+# Few small improvements over nano-gpt taken from repo build-nanogpt by Karpathy
 
 Imporvements:
 1) Zero Optimization(Using pytorch zero redundancy optimization(saves memory in distributed setting, soon to publish results)
