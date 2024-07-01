@@ -6,8 +6,9 @@ Imporvements:
 3) Setting gradients to None instead of zero because assignment is faster than addition(https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html). This does not matter much, only increased performance by less than 1 percent but good to have
 
 Few things that didn't work:
-1)Using pin_memory=True for faster data loading. The data transfer should be overlapped by the kernel execution when using this but tokens/sec in training remains same when this is toggled. I think this is due to syncronization points or for this to take effect I might have to use pytorch's inbuilt Dataloader
-2)Compiling optimizer step leads to reduced training speed (https://pytorch.org/tutorials/recipes/compiling_optimizer.html)
+1) Using pin_memory=True for faster data loading.
+   The data transfer should be overlapped by the kernel execution when using this but tokens/sec in training remains same when this is toggled. I think this is due to syncronization points or for this to take effect I might have to use pytorch's inbuilt Dataloader
+3) Compiling optimizer step leads to reduced training speed (https://pytorch.org/tutorials/recipes/compiling_optimizer.html)
 
 Also implemented using deepspeed which gives similar results as original pytorch implementation without much changes to original code)
 
