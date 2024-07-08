@@ -1,4 +1,4 @@
-# Improved nanogpt taken from repo [build-nanogpt](https://github.com/karpathy/build-nanogpt) by [Karpathy](https://github.com/karpathy)
+# Improved nanogpt over repo [build-nanogpt](https://github.com/karpathy/build-nanogpt) by [Karpathy](https://github.com/karpathy)
 
 Imporvements:
 1) Zero Optimization(Using pytorch zero redundancy optimization(saves memory in distributed setting, soon to publish results)
